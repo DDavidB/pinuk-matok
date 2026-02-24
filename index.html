@@ -41,23 +41,23 @@
 </header>
 
 <nav class="nav-bar">
-    <button class="tab-btn active" id="btn-menu" onclick="openTab('menu')">תפריט</button>
-    <button class="tab-btn" id="btn-holidays" onclick="openTab('holidays')">חגים ומארזים</button>
-    <button class="tab-btn" id="btn-about" onclick="openTab('about')">הסיפור שלנו</button>
-    <button class="tab-btn" id="btn-contact" onclick="openTab('contact')">הזמנות</button>
+    <button class="tab-btn active" id="btn-menu" onclick="openTab(event, 'menu')">תפריט</button>
+    <button class="tab-btn" id="btn-holidays" onclick="openTab(event, 'holidays')">חגים ומארזים</button>
+    <button class="tab-btn" id="btn-about" onclick="openTab(event, 'about')">הסיפור שלנו</button>
+    <button class="tab-btn" id="btn-contact" onclick="openTab(event, 'contact')">הזמנות</button>
 </nav>
 
 <div id="menu" class="content-section active">
-    <h2 class="category-title" id="cat-cakes">עוגות</h2>
+    <h2 class="category-title">עוגות</h2>
     <div class="gallery">
-        <div class="card"><img src="images/cake1.jpg"><h3>עוגת יום הולדת</h3></div>
+        <div class="card"><img src="images/cake1.jpg"><h3>עוגת יום הולדת חגיגית</h3></div>
         <div class="card"><img src="images/maple_cake.jpg"><h3>מייפל אגוזים</h3></div>
     </div>
-    <h2 class="category-title" id="cat-cookies">עוגיות</h2>
+    <h2 class="category-title">עוגיות</h2>
     <div class="gallery">
-        <div class="card"><img src="images/alfajores.jpg"><h3>אלפחורס</h3></div>
+        <div class="card"><img src="images/alfajores.jpg"><h3>אלפחורס נימוחים</h3></div>
     </div>
-    <h2 class="category-title" id="cat-pastries">מאפים שונים</h2>
+    <h2 class="category-title">מאפים שונים</h2>
     <div class="gallery">
         <div class="card"><img src="images/shabbat_rolls.jpg"><h3>לחמניות לשבת</h3></div>
         <div class="card"><img src="images/finger_challah.jpg"><h3>חלות אצבע</h3></div>
@@ -66,7 +66,7 @@
 </div>
 
 <div id="holidays" class="content-section">
-    <h2 class="category-title" id="cat-special">מארזי חג ופינוקים</h2>
+    <h2 class="category-title">מארזי חג ופינוקים</h2>
     <div class="gallery">
         <div class="card"><img src="images/mishloach_manot.jpg"><h3>משלוח מנות קומפלט</h3></div>
         <div class="card"><img src="images/oznei_haman.jpg"><h3>אזני המן</h3></div>
@@ -77,14 +77,14 @@
 <div id="about" class="content-section">
     <div class="about-box">
         <h2 id="about-title">הסיפור של הודיה</h2>
-        <p id="about-text">הודיה, בת 25, התחילה את דרכה במטבח בגיל 5 – אז היא בעיקר "עזרה" בללקק את המרית. כיום היא קונדיטורית מקצועית שמגשימה חלומות מתוקים בהזמנה אישית.</p>
+        <p id="about-text">הודיה, בת 25, התחילה את דרכה במטבח כבר בגיל 5 – אז היא בעיקר "עזרה" בללקק את המרית. עם השנים התשוקה הפכה למקצוע. היא למדה קורסים מתקדמים בעולם הקונדיטוריה והאפייה, פיתחה מתכונים ייחודיים משלה, וכיום היא מגשימה חלומות מתוקים בעוגות ומאפים בהזמנה אישית.</p>
     </div>
 </div>
 
 <div id="contact" class="content-section">
     <div class="about-box">
         <h2 id="contact-title">צרו קשר</h2>
-        <p id="contact-text">להזמנות אישיות:</p>
+        <p id="contact-text">להזמנות אישיות לאירועים, שבתות או סתם כשמתחשק משהו מתוק:</p>
         <p>📞 050-0000000</p>
     </div>
 </div>
@@ -96,14 +96,15 @@
     let currentLang = 'he';
     const translations = {
         he: { title: "פינוק מתוק", menu: "תפריט", holidays: "חגים ומארזים", about: "הסיפור שלנו", contact: "הזמנות", wa: "הזמנה בוואטסאפ", footer: "האתר פותח ע"י DB בניית אתרים © 2026", dir: "rtl" },
-        en: { title: "Pinuk Matok", menu: "Menu", holidays: "Holidays", about: "Our Story", contact: "Orders", wa: "WhatsApp Order", footer: "Developed by DB Web Design © 2026", dir: "ltr" }
+        en: { title: "Pinuk Matok", menu: "Menu", holidays: "Holidays & Sets", about: "Our Story", contact: "Orders", wa: "WhatsApp Order", footer: "Developed by DB Web Design © 2026", dir: "ltr" }
     };
 
-    function openTab(tabId) {
+    function openTab(event, tabId) {
         document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
         document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        
         document.getElementById(tabId).classList.add('active');
-        document.getElementById('btn-' + tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
     }
 
     function toggleLanguage() {
