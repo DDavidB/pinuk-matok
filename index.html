@@ -6,59 +6,53 @@
     <title>פינוק מתוק - עוגות ומאפים</title>
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #fffafa; margin: 0; color: #333; }
-        header { background: linear-gradient(135deg, #ffb6c1, #ff8da1); padding: 30px; text-align: center; color: white; }
-        h2 { text-align: center; color: #d63384; margin-top: 30px; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px 40px; }
-        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s; text-align: center; }
-        .card:hover { transform: translateY(-5px); }
-        .card img { width: 100%; height: 250px; object-fit: cover; background-color: #eee; }
-        .card h3 { padding: 15px; margin: 0; font-size: 1.2em; }
-        
-        /* כפתור וואטסאפ - ימין */
-        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
-        
-        /* כפתור ניהול - שמאל */
-        .admin-btn { position: fixed; bottom: 20px; left: 20px; background-color: #555; color: white; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-size: 13px; opacity: 0.8; z-index: 1000; }
-        .admin-btn:hover { opacity: 1; background-color: #000; }
+        header { background-color: #fce4ec; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .logo-img { max-width: 200px; height: auto; border-radius: 50%; }
+        h2 { text-align: center; color: #d63384; margin-top: 40px; padding-bottom: 10px; border-bottom: 2px solid #ffc1cc; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px 40px; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
+        .card img { width: 100%; height: 200px; object-fit: cover; background-color: #eee; }
+        .card h3 { padding: 10px; margin: 0; font-size: 1.1em; }
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; }
+        .admin-btn { position: fixed; bottom: 20px; left: 20px; background-color: #555; color: white; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-size: 12px; opacity: 0.8; }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>פינוק מתוק</h1>
-    <p>העולם הקולינרי של הודיה - עוגות, עוגיות ומאפים</p>
+    <img src="images/logo.jpeg" alt="לוגו פינוק מתוק" class="logo-img">
 </header>
 
 <h2>🍰 עוגות מעוצבות</h2>
 <div class="gallery">
     <div class="card">
-        <img src="images/cake1.jpg" alt="עוגה 1">
+        <img src="images/cake1.jpg" alt="עוגת יום הולדת">
         <h3>עוגת יום הולדת חגיגית</h3>
     </div>
     <div class="card">
-        <img src="images/cake2.jpg" alt="עוגה 2">
-        <h3>עוגת מוס שכבות</h3>
+        <img src="images/maple_cake.jpg" alt="עוגת מייפל">
+        <h3>עוגת מייפל אגוזים</h3>
     </div>
 </div>
 
-<h2>🍪 עוגיות ומאפים טריים</h2>
+<h2>🍪 עוגיות ומאפים</h2>
 <div class="gallery">
     <div class="card">
-        <img src="images/cookie1.jpg" alt="עוגיות">
-        <h3>מארז עוגיות חמאה</h3>
+        <img src="images/alfajores.jpg" alt="אלפחורס">
+        <h3>אלפחורס נימוחים</h3>
     </div>
     <div class="card">
-        <img src="images/pastry1.jpg" alt="מאפה">
-        <h3>קרואסון שוקולד חם</h3>
+        <img src="images/oznei_haman.jpg" alt="אזני המן">
+        <h3>אזני המן במגוון מילויים</h3>
+    </div>
+    <div class="card">
+        <img src="images/donuts.jpg" alt="סופגניות">
+        <h3>סופגניות חמות ומתוקות</h3>
     </div>
 </div>
 
-<a href="https://wa.me/972586527034" class="whatsapp-btn" target="_blank">הזמנה בוואטסאפ 📱</a>
-
-<a href="https://github.com/ddavidb/Sweet_Treat/upload/main/images" class="admin-btn" target="_blank">  האתר פותח ע"י DB פיתוח אתרים </a>
+<a href="https://wa.me/972500000000" class="whatsapp-btn" target="_blank">הזמנה בוואטסאפ 📱</a>
+<a href="https://github.com/ddavidb/Sweet_Treat/upload/main/images" class="admin-btn" target="_blank">ניהול תמונות ⚙️</a>
 
 </body>
 </html>
-
-
-
