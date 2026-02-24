@@ -6,15 +6,26 @@
     <title>פינוק מתוק - עוגות ומאפים</title>
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #fffafa; margin: 0; color: #333; }
-        header { background-color: #fce4ec; padding: 25px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-        .logo-img { max-width: 180px; height: auto; border-radius: 50%; }
-        h2 { text-align: center; color: #d63384; margin-top: 40px; padding-bottom: 10px; border-bottom: 2px solid #ffc1cc; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px 40px; }
+        header { background-color: #fce4ec; padding: 20px; text-align: center; }
+        .logo-img { max-width: 150px; border-radius: 50%; }
+
+        /* עיצוב התגים/לשוניות */
+        .tabs { display: flex; justify-content: center; background: #ffc1cc; padding: 10px; position: sticky; top: 0; z-index: 1000; }
+        .tab-btn { background: none; border: none; padding: 10px 20px; cursor: pointer; font-size: 16px; font-weight: bold; color: white; transition: 0.3s; }
+        .tab-btn.active { background: white; color: #d63384; border-radius: 20px; }
+
+        .content-section { display: none; padding: 20px; animation: fadeIn 0.5s; }
+        .content-section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); text-align: center; }
-        .card img { width: 100%; height: 200px; object-fit: cover; background-color: #eee; }
-        .card h3 { padding: 15px; margin: 0; font-size: 1.1em; color: #555; }
-        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-        footer { text-align: center; padding: 30px; background-color: #f8f9fa; color: #888; font-size: 14px; margin-top: 40px; }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
+        
+        .about-text, .reviews { max-width: 800px; margin: 0 auto; line-height: 1.6; text-align: center; }
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; }
+        footer { text-align: center; padding: 20px; font-size: 12px; color: #888; }
     </style>
 </head>
 <body>
@@ -23,39 +34,22 @@
     <img src="images/logo.jpeg" alt="לוגו פינוק מתוק" class="logo-img">
 </header>
 
-<h2>🍰 עוגות מעוצבות</h2>
-<div class="gallery">
-    <div class="card">
-        <img src="images/cake1.jpg" alt="עוגת יום הולדת">
-        <h3>עוגת יום הולדת חגיגית</h3>
-    </div>
-    <div class="card">
-        <img src="images/maple_cake.jpg" alt="עוגת מייפל">
-        <h3>עוגת מייפל אגוזים</h3>
+<nav class="tabs">
+    <button class="tab-btn active" onclick="openTab('menu')">התפריט שלנו</button>
+    <button class="tab-btn" onclick="openTab('about')">הסיפור של הודיה</button>
+    <button class="tab-btn" onclick="openTab('reviews')">לקוחות ממליצים</button>
+</nav>
+
+<div id="menu" class="content-section active">
+    <h2>🍰 עוגות ומאפים</h2>
+    <div class="gallery">
+        <div class="card"><img src="images/cake1.jpg"><h3>עוגת יום הולדת</h3></div>
+        <div class="card"><img src="images/maple_cake.jpg"><h3>מייפל אגוזים</h3></div>
+        <div class="card"><img src="images/alfajores.jpg"><h3>אלפחורס</h3></div>
     </div>
 </div>
 
-<h2>🍪 עוגיות ומאפים</h2>
-<div class="gallery">
-    <div class="card">
-        <img src="images/alfajores.jpg" alt="אלפחורס">
-        <h3>אלפחורס נימוחים</h3>
-    </div>
-    <div class="card">
-        <img src="images/oznei_haman.jpg" alt="אזני המן">
-        <h3>אזני המן במגוון מילויים</h3>
-    </div>
-    <div class="card">
-        <img src="images/donuts.jpg" alt="סופגניות">
-        <h3>סופגניות חמות ומתוקות</h3>
-    </div>
-</div>
-
-<a href="https://wa.me/972500000000" class="whatsapp-btn" target="_blank">הזמנה בוואטסאפ 📱</a>
-
-<footer>
-    <p>האתר פותח ע"י **DB בניית אתרים** &copy; 2026</p>
-</footer>
-
-</body>
-</html>
+<div id="about" class="content-section">
+    <div class="about-text">
+        <h2>הסיפור שמאחורי המתוק</h2>
+        <p>נעים מאוד, אני הודיה. האהבה שלי לאפייה התחילה כבר מהמטבח של אמא, שם גיליתי שכל עוגה היא סיפור של אהבה. ב"פינוק מתוק" אני משתמשת רק בחומרי הגלם הכי איכותיים כדי להביא לכם טעם ביתי, ח
