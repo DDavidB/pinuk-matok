@@ -3,48 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>פינוק מתוק - עוגות מעוצבות</title>
+    <title>פינוק מתוק - עוגות ומאפים</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fff5f8; margin: 0; color: #444; }
-        header { background-color: #ffb6c1; padding: 20px; text-align: center; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 40px; }
-        .cake-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
-        .cake-card img { width: 100%; height: 200px; object-fit: cover; }
-        .cake-card h3 { padding: 10px; margin: 0; color: #d63384; }
-        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s; }
-        .whatsapp-btn:hover { background-color: #128c7e; transform: scale(1.1); }
-        footer { text-align: center; padding: 20px; background: #eee; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #fffafa; margin: 0; color: #333; }
+        header { background: linear-gradient(135deg, #ffb6c1, #ff8da1); padding: 30px; text-align: center; color: white; }
+        h2 { text-align: center; color: #d63384; margin-top: 30px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 20px 40px; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: 0.3s; text-align: center; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 250px; object-fit: cover; background-color: #eee; }
+        .card h3 { padding: 15px; margin: 0; font-size: 1.2em; }
+        
+        /* כפתור וואטסאפ - ימין */
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        
+        /* כפתור ניהול - שמאל */
+        .admin-btn { position: fixed; bottom: 20px; left: 20px; background-color: #555; color: white; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-size: 13px; opacity: 0.8; z-index: 1000; }
+        .admin-btn:hover { opacity: 1; background-color: #000; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>פינוק מתוק</h1>
-    <p>העוגות המעוצבות של הודיה</p>
+    <p>העולם הקולינרי של הודיה - עוגות, עוגיות ומאפים</p>
 </header>
 
+<h2>🍰 עוגות מעוצבות</h2>
 <div class="gallery">
-    <div class="cake-card">
-        <img src="https://via.placeholder.com/300x200?text=Cake1" alt="עוגת מוס">
-        <h3>עוגת מוס קינדר</h3>
+    <div class="card">
+        <img src="images/cake1.jpg" alt="עוגה 1">
+        <h3>עוגת יום הולדת חגיגית</h3>
     </div>
-    <div class="cake-card">
-        <img src="https://via.placeholder.com/300x200?text=Cake2" alt="עוגת יום הולדת">
-        <h3>עוגת יום הולדת מעוצבת</h3>
-    </div>
-    <div class="cake-card">
-        <img src="https://via.placeholder.com/300x200?text=Cake3" alt="קאפקייקס">
-        <h3>מארז קאפקייקס צבעוני</h3>
+    <div class="card">
+        <img src="images/cake2.jpg" alt="עוגה 2">
+        <h3>עוגת מוס שכבות</h3>
     </div>
 </div>
 
-<a href="https://wa.me/972500000000?text=היי הודיה, אשמח להזמין עוגה!" class="whatsapp-btn" target="_blank">
-    הזמינו בוואטסאפ 📱
-</a>
+<h2>🍪 עוגיות ומאפים טריים</h2>
+<div class="gallery">
+    <div class="card">
+        <img src="images/cookie1.jpg" alt="עוגיות">
+        <h3>מארז עוגיות חמאה</h3>
+    </div>
+    <div class="card">
+        <img src="images/pastry1.jpg" alt="מאפה">
+        <h3>קרואסון שוקולד חם</h3>
+    </div>
+</div>
 
-<footer>
-    <p>&copy; 2026 פינוק מתוק - כל הזכויות שמורות</p>
-</footer>
+<a href="https://wa.me/972500000000" class="whatsapp-btn" target="_blank">הזמנה בוואטסאפ 📱</a>
+
+<a href="https://github.com/ddavidb/Sweet_Treat/upload/main/images" class="admin-btn" target="_blank">ניהול תמונות (להודיה) ⚙️</a>
 
 </body>
 </html>
