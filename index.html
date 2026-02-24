@@ -1,227 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Website</title>
+    <title>פינוק מתוק - עוגות מעוצבות</title>
     <style>
-        body {
-            font-family: David, sans-serif;
-            background-color: #865555;
-            color: #800;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 {
-            color: #0056b3;
-        }
-        img {
-            max-width: 15%;
-            height: auto;
-            display: none; /* Hide the image initially */
-        }
-    
-    
-        .child-fields {
-            margin-top: 10px;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fff5f8; margin: 0; color: #444; }
+        header { background-color: #ffb6c1; padding: 20px; text-align: center; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 40px; }
+        .cake-card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); text-align: center; }
+        .cake-card img { width: 100%; height: 200px; object-fit: cover; }
+        .cake-card h3 { padding: 10px; margin: 0; color: #d63384; }
+        .whatsapp-btn { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: 0.3s; }
+        .whatsapp-btn:hover { background-color: #128c7e; transform: scale(1.1); }
+        footer { text-align: center; padding: 20px; background: #eee; }
     </style>
-    <!-- הוספת קישור ל-SheetJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
-    <script>
-        function checkCode() {
-            var code = document.getElementById("codeInput").value;
-            if (code === "2435") {
-                document.getElementById("secretImage").style.display = "block";
-            } else {
-                alert("הקוד שהזנת שגוי. נסה שוב.");
-            }
-        }
-
-        let registrations = [];
-        let childCount = 0;
-
-        function updateTime() {
-            var now = new Date();
-            var hours = now.getHours();
-            var minutes = now.getMinutes();
-            var seconds = now.getSeconds();
-            if (minutes < 10) minutes = "0" + minutes;
-            if (seconds < 10) seconds = "0" + seconds;
-            var timeString = hours + ":" + minutes + ":" + seconds;
-            var timeElement = document.getElementById("time");
-            if (timeElement) {
-                timeElement.textContent = timeString;
-            }
-        }
-
-        function register() {
-            var firstName = document.getElementById("firstName").value;
-            var lastName = document.getElementById("lastName").value;
-            var idNumber = document.getElementById("idNumber").value;
-            var carNumber = document.getElementById("carNumber").value;
-            var city = document.getElementById("city").value;
-            var street = document.getElementById("street").value;
-            var houseNumber = document.getElementById("houseNumber").value;
-            var numChildren = document.getElementById("numChildren").value;
-
-            let children = [];
-            for (let i = 0; i < childCount; i++) {
-                let name = document.getElementById(`childName${i}`).value;
-                let dob = document.getElementById(`childDOB${i}`).value;
-                let id = document.getElementById(`childID${i}`).value;
-                let age = calculateAge(dob);
-                children.push({ name, dob, age, id });
-            }
-
-            if (firstName && lastName && idNumber && city && street && houseNumber && carNumber) {
-                registrations.push({
-                    firstName,
-                    lastName,
-                    idNumber,
-                    carNumber,
-                    city,
-                    street,
-                    houseNumber,
-                    numChildren,
-                    children
-                });
-
-                alert("נרשמת בהצלחה!");
-                document.getElementById("registrationForm").reset();
-                document.getElementById("childrenContainer").innerHTML = '';
-                childCount = 0;
-            } else {
-                alert("אנא מלא את כל השדות.");
-            }
-        }
-
-        function calculateAge(dob) {
-            var dobDate = new Date(dob);
-            var diff = Date.now() - dobDate.getTime();
-            var ageDate = new Date(diff);
-            return Math.abs(ageDate.getUTCFullYear() - 1970);
-        }
-
-        function addChild() {
-            if (childCount >= 15) {
-                alert("לא ניתן להוסיף יותר מ-15 ילדים.");
-                return;
-            }
-
-            var container = document.getElementById("childrenContainer");
-            var div = document.createElement("div");
-            div.className = "child-fields";
-            div.innerHTML = `
-                <h3>ילד ${childCount + 1}</h3>
-                <label for="childName${childCount}">שם:</label><br>
-                <input type="text" id="childName${childCount}" name="childName${childCount}" pattern="[A-Za-zא-ת]+" title="יש להזין רק אותיות"><br>
-                <label for="childDOB${childCount}">תאריך לידה:</label><br>
-                <input type="date" id="childDOB${childCount}" name="childDOB${childCount}" onchange="updateAge(${childCount})"><br>
-                <label for="childAge${childCount}">גיל:</label><br>
-                <input type="text" id="childAge${childCount}" name="childAge${childCount}" readonly><br>
-                <label for="childID${childCount}">תעודת זהות:</label><br>
-                <input type="text" id="childID${childCount}" name="childID${childCount}" maxlength="9" pattern="\\d{9}" title="יש להזין 9 ספרות"><br><br>
-            `;
-            container.appendChild(div);
-            childCount++;
-        }
-
-        function updateAge(index) {
-            var dob = document.getElementById(`childDOB${index}`).value;
-            var age = calculateAge(dob);
-            document.getElementById(`childAge${index}`).value = age;
-        }
-
-        function downloadExcel() {
-            var code = document.getElementById("excelCodeInput").value;
-            if (code === "31669") {
-                fetch('http://localhost:3000/registrations')
-                    .then(response => response.json())
-                    .then(data => {
-                        var formattedData = data.map(registration => {
-                            return {
-                                'NAME': registration.firstName,
-                                'שם משפחה': registration.lastName,
-                                'תעודת זהות': registration.idNumber,
-                                'מספר רכב': registration.carNumber,
-                                'עיר': registration.city,
-                                'רחוב': registration.street,
-                                'מספר בית': registration.houseNumber,
-                                'מספר ילדם': registration.numChildren,
-                                'ילדים': registration.children.map((child, i) => 
-                                    `ילד ${i+1}: ${child.name}, ${child.dob}, גיל: ${child.age}, תעודת זהות: ${child.id}`).join('\n')
-                            };
-                        });
-                        var wb = XLSX.utils.book_new();
-                        var ws = XLSX.utils.json_to_sheet(formattedData);
-                        XLSX.utils.book_append_sheet(wb, ws, "Registrations");
-                        XLSX.writeFile(wb, "registrations.xlsx");
-                    }).catch(error => {
-                        console.error('Error:', error);
-                    });
-            } else {
-                alert("הקוד שהזנת שגוי. נסה שוב.");
-            }
-        }
-
-        // Update time every second
-        setInterval(updateTime, 1000);
-        // Initial call to display time immediately on load
-        updateTime();
-    </script>
 </head>
 <body>
-    <h1>מה המצב , טוב לראותך</h1>
-    <h1>HTML זוהי התנסות שלי בכתיבת</h1>
 
-    <p>This is my website !</p>
+<header>
+    <h1>פינוק מתוק</h1>
+    <p>העוגות המעוצבות של הודיה</p>
+</header>
 
-    <h2>About Me</h2>
-    <p>My name is דוד ברכה.</p>
+<div class="gallery">
+    <div class="cake-card">
+        <img src="https://via.placeholder.com/300x200?text=Cake1" alt="עוגת מוס">
+        <h3>עוגת מוס קינדר</h3>
+    </div>
+    <div class="cake-card">
+        <img src="https://via.placeholder.com/300x200?text=Cake2" alt="עוגת יום הולדת">
+        <h3>עוגת יום הולדת מעוצבת</h3>
+    </div>
+    <div class="cake-card">
+        <img src="https://via.placeholder.com/300x200?text=Cake3" alt="קאפקייקס">
+        <h3>מארז קאפקייקס צבעוני</h3>
+    </div>
+</div>
 
-    <h2>אחינעם ברכה המתוקה</h2>
-    <p>להצגת התמונה הזן את הקוד :</p>
-    <input type="text" id="codeInput" placeholder="הזן קוד">
-    <button onclick="checkCode()">פתח תמונה</button>
-    <img id="secretImage" src="Ahinoam.jpg" alt="A beautiful scenery">
+<a href="https://wa.me/972500000000?text=היי הודיה, אשמח להזמין עוגה!" class="whatsapp-btn" target="_blank">
+    הזמינו בוואטסאפ 📱
+</a>
 
-    <h2>הרשמה</h2>
-    <form id="registrationForm">
-        <label for="firstName">שם פרטי:</label><br>
-        <input type="text" id="firstName" name="firstName" pattern="[A-Za-zא-ת]+" title="יש להזין רק אותיות"><br>
-        <label for="lastName">שם משפחה:</label><br>
-        <input type="text" id="lastName" name="lastName" pattern="[A-Za-zא-ת]+" title="יש להזין רק אותיות"><br>
-        <label for="idNumber">תעודת זהות:</label><br>
-        <input type="text" id="idNumber" name="idNumber" maxlength="9" pattern="\d{9}" title="יש להזין 9 ספרות"><br>
-        <label for="carNumber">מספר רכב:</label><br>
-        <input type="text" id="carNumber" name="carNumber"><br>
-        <label for="city">עיר:</label><br>
-        <input type="text" id="city" name="city"><br>
-        <label for="street">רחוב:</label><br>
-        <input type="text" id="street" name="street"><br>
-        <label for="houseNumber">מספר בית:</label><br>
-        <input type="text" id="houseNumber" name="houseNumber"><br>
-        <label for="numChildren">מס[_{{{CITATION{{{_1{](https://github.com/fireun/Masomon-Online-Shopping/tree/6fa264f2c43c095aa821a7eafd80b8ca66a77afe/user%2FcancellationRequest.php)[_{{{CITATION{{{_2{](https://github.com/demkantor/developers_blog/tree/d90dacbf41736a773f2aa35ccfdb0838800f318d/src%2Fpages%2Fposts%2F005.md)[_{{{CITATION{{{_3{](https://github.com/Beats0/js-practice/tree/dbceaf1e663abfdee4de29b8308f70b68dc63b36/JavaScript_TheDefinitiveGuide%2FEvent%2FREADME.MD)
-		        <label for="numChildren">מספר ילדים:</label><br>
-        <input type="number" id="numChildren" name="numChildren" min="0" max="15"><br>
-        <button type="button" onclick="addChild()">הוסף ילד</button><br>
+<footer>
+    <p>&copy; 2026 פינוק מתוק - כל הזכויות שמורות</p>
+</footer>
 
-        <div id="childrenContainer"></div>
-
-        <br><button type="button" onclick="register()">הרשם</button>
-    </form>
-    
-    <h2>הורדת טבלת אקסל</h2>
-    <p>להורדת הטבלה הזן את הקוד הנכון:</p>
-    <input type="text" id="excelCodeInput" placeholder="הזן קוד">
-    <button type="button" onclick="downloadExcel()">הורד טבלת אקסל</button>
-    
-    <h2>Contact</h2>
-    <p>Feel free to <a href="mailto:davidbera8@gmail.com">דבר איתי במייל</a> with any questions or comments.</p>
-
-    <h2>השעה הנוכחית</h2>
-    <p>השעה הנוכחית היא: <span id="time"></span></p>
 </body>
 </html>
-
