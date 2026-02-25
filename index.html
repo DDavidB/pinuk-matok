@@ -41,10 +41,10 @@
 </header>
 
 <nav class="nav-bar">
-    <button class="tab-btn active" id="btn-menu" onclick="openTab(event, 'menu')">תפריט</button>
-    <button class="tab-btn" id="btn-holidays" onclick="openTab(event, 'holidays')">חגים ומארזים</button>
-    <button class="tab-btn" id="btn-about" onclick="openTab(event, 'about')">הסיפור שלנו</button>
-    <button class="tab-btn" id="btn-contact" onclick="openTab(event, 'contact')">הזמנות</button>
+    <button class="tab-btn active" id="btn-menu" onclick="openTab('menu')">תפריט</button>
+    <button class="tab-btn" id="btn-holidays" onclick="openTab('holidays')">חגים ומארזים</button>
+    <button class="tab-btn" id="btn-about" onclick="openTab('about')">הסיפור שלנו</button>
+    <button class="tab-btn" id="btn-contact" onclick="openTab('contact')">הזמנות</button>
 </nav>
 
 <div id="menu" class="content-section active">
@@ -77,7 +77,7 @@
 <div id="about" class="content-section">
     <div class="about-box">
         <h2 id="about-title">הסיפור של הודיה</h2>
-        <p id="about-text">הודיה, בת 25, התחילה את דרכה במטבח כבר בגיל 5 – אז היא בעיקר "עזרה" בללקק את המרית. עם השנים התשוקה הפכה למקצוע. היא למדה קורסים מתקדמים בעולם הקונדיטוריה והאפייה, פיתחה מתכונים ייחודיים משלה, וכיום היא מגשימה חלומות מתוקים בעוגות ומאפים בהזמנה אישית.</p>
+        <p id="about-text">הודיה, בת 25, התחילה את דרכה במטבח כבר בגיל 5 – אז היא בעיקר "עזרה" בללקק את המרית. עם השנים התשוקה הפכה למקצוע. היא למדה קורסים מתקדמים בעולם הקונדיטוריה והאפייה, פיתחה מתכונים ייחודיים משלה, וכיום היא מגשימה חלומות מתוקים בעוגות ומאפים בהזמנה אישית מכל הסוגים.</p>
     </div>
 </div>
 
@@ -85,11 +85,11 @@
     <div class="about-box">
         <h2 id="contact-title">צרו קשר</h2>
         <p id="contact-text">להזמנות אישיות לאירועים, שבתות או סתם כשמתחשק משהו מתוק:</p>
-        <p>📞 050-0000000</p>
+        <p>📞 058-6527032</p>
     </div>
 </div>
 
-<a href="https://wa.me/972500000000" class="whatsapp-btn" id="wa-text">הזמנה בוואטסאפ</a>
+<a href="https://wa.me/972586527032" class="whatsapp-btn" id="wa-text" target="_blank">הזמנה בוואטסאפ</a>
 <footer id="footer-text">האתר פותח ע"י DB בניית אתרים &copy; 2026</footer>
 
 <script>
@@ -99,12 +99,22 @@
         en: { title: "Pinuk Matok", menu: "Menu", holidays: "Holidays & Sets", about: "Our Story", contact: "Orders", wa: "WhatsApp Order", footer: "Developed by DB Web Design © 2026", dir: "ltr" }
     };
 
-    function openTab(event, tabId) {
-        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    function openTab(tabId) {
+        // מנקה את התצוגה מכל האזורים
+        let sections = document.querySelectorAll('.content-section');
+        for(let i = 0; i < sections.length; i++) {
+            sections[i].classList.remove('active');
+        }
         
+        // מנקה את הצבע מכל הכפתורים
+        let buttons = document.querySelectorAll('.tab-btn');
+        for(let i = 0; i < buttons.length; i++) {
+            buttons[i].classList.remove('active');
+        }
+        
+        // מפעיל רק את האזור והכפתור שלחצו עליהם
         document.getElementById(tabId).classList.add('active');
-        event.currentTarget.classList.add('active');
+        document.getElementById('btn-' + tabId).classList.add('active');
     }
 
     function toggleLanguage() {
