@@ -27,20 +27,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         body {
             font-family: 'Segoe UI', Tahoma, sans-serif;
             margin: 0;
-            background: #fffafa;
+            /* כאן הוספתי את תמונת הרקע עם שכבת צבע לבנה חצי-שקופה כדי לשמור על קריאות */
+            background: linear-gradient(rgba(255, 250, 250, 0.88), rgba(255, 250, 250, 0.88)), url('images/bg-image.jpg') no-repeat center center fixed;
+            background-size: cover;
             color: #333;
             transition: all .3s ease;
         }
 
-        /* מירכוז מושלם של הלוגו והכותרת */
         header {
-            background: var(--light-pink);
+            background: rgba(252, 228, 236, 0.85); /* שקיפות קלה להדר כדי שיראו טיפה רקע */
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center; 
             justify-content: center;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
 
         .logo-img {
@@ -48,20 +50,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             border-radius: 50%;
             border: 3px solid #fff;
             margin-bottom: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         
         #main-title {
             margin: 0;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
 
         .nav-bar {
             display: flex;
             justify-content: center;
-            background: #ffc1cc;
+            background: rgba(255, 193, 204, 0.95);
             position: sticky;
             top: 0;
             z-index: 1000;
             flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
         }
 
         .tab-btn {
@@ -74,15 +80,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             flex: 1;
             min-width: 90px;
             transition: .3s;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
         }
 
         .tab-btn:hover {
-            background: #ff99bb;
+            background: rgba(255, 153, 187, 0.9);
         }
 
         .tab-btn.active {
             background: white;
             color: var(--main-pink);
+            text-shadow: none;
         }
 
         .lang-switch {
@@ -119,13 +127,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             text-align: center;
             color: var(--main-pink);
             margin-top: 40px;
-            border-bottom: 2px solid var(--light-pink);
+            border-bottom: 2px solid var(--main-pink);
             padding-bottom: 6px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* מירכוז הכותרת */
+        .title-wrapper {
+            text-align: center;
         }
 
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* הגדלתי מעט את הרוחב המינימלי */
             gap: 20px;
             margin: 30px 0;
         }
@@ -134,31 +150,34 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             background: white;
             border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,.1);
             transition: .3s;
             text-align: center;
+            border: 2px solid white;
         }
 
         .card:hover {
             transform: translateY(-5px);
+            border-color: var(--light-pink);
+            box-shadow: 0 8px 25px rgba(214, 51, 132,.15);
         }
 
-        /* אנימציה לתמונות */
         .card img {
             width: 100%;
-            height: 150px;
+            height: 180px; /* הוגדל קצת כדי שהתמונות ייראו טוב יותר */
             object-fit: cover;
             background: #eee;
             transition: transform 0.4s ease;
+            cursor: pointer;
         }
 
         .card:hover img {
-            transform: scale(1.1);
+            transform: scale(1.08);
         }
 
         .card h3 {
-            font-size: 14px;
-            padding: 10px;
+            font-size: 15px;
+            padding: 12px;
             margin: 0;
             position: relative;
             background: white;
@@ -166,15 +185,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
 
         .about-box {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
             padding: 25px;
             border-radius: 18px;
-            box-shadow: 0 6px 18px rgba(0,0,0,.05);
+            box-shadow: 0 6px 18px rgba(0,0,0,.08);
             line-height: 1.7;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
 
-        /* אנימציית פעימה לוואטסאפ */
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); }
             50% { transform: scale(1.08); box-shadow: 0 5px 25px rgba(37, 211, 102, 0.8); }
@@ -206,11 +225,58 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         footer {
             text-align: center;
             padding: 20px;
-            background: #f1f1f1;
+            background: rgba(241, 241, 241, 0.9);
             font-size: 13px;
             margin-top: 40px;
             border-top: 1px solid #ddd;
             font-weight: bold;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            animation: zoomIn 0.3s ease;
+        }
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .close-lightbox:hover {
+            color: var(--main-pink);
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.8); }
+            to { transform: scale(1); }
         }
     </style>
 </head>
@@ -219,6 +285,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTLTLDLP"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
     <button class="lang-switch" id="langToggle">English / עברית</button>
 
     <header>
@@ -234,11 +301,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </nav>
 
     <section id="menu" class="content-section active">
-        <h2 class="category-title">עוגות</h2>
+        
+        <div class="title-wrapper"><h2 class="category-title">עוגות</h2></div>
         <div class="gallery">
             <div class="card">
-                <img src="images/cake1.jpg" loading="lazy">
-                <h3>עוגת יום הולדת חגיגית</h3>
+                <img src="images/oreo-cake.jpg" loading="lazy">
+                <h3>עוגת אוראו מושחתת</h3>
+            </div>
+            <div class="card">
+                <img src="images/pink-cake.jpg" loading="lazy">
+                <h3>עוגה ורודה חגיגית</h3>
+            </div>
+            <div class="card">
+                <img src="images/babka.jpg" loading="lazy">
+                <h3>עוגות שמרים וקראנץ'</h3>
             </div>
             <div class="card">
                 <img src="images/maple_cake.jpg" loading="lazy">
@@ -246,31 +322,64 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </div>
         </div>
 
-        <h2 class="category-title">עוגיות</h2>
+        <div class="title-wrapper"><h2 class="category-title">מגשי אירוח</h2></div>
         <div class="gallery">
             <div class="card">
-                <img src="images/alfajores.jpeg" loading="lazy">
-                <h3>אלפחורס נימוחים</h3>
+                <img src="images/cups.jpg" loading="lazy">
+                <h3>מארז קינוחי כוסות</h3>
+            </div>
+            <div class="card">
+                <img src="images/brownies-cookies.jpg" loading="lazy">
+                <h3>פלטת בראוניז ועוגיות</h3>
+            </div>
+            <div class="card">
+                <img src="images/alfajores-heart.jpg" loading="lazy">
+                <h3>אלפחורס לבבות</h3>
+            </div>
+            <div class="card">
+                <img src="images/churros.jpg" loading="lazy">
+                <h3>מגש צ'ורוס מטריף</h3>
             </div>
         </div>
+
+        <div class="title-wrapper"><h2 class="category-title">שולחנות קינוחים</h2></div>
+        <div class="gallery">
+            <div class="card">
+                <img src="images/table1.jpg" loading="lazy">
+                <h3>בר מתוקים לאירועים</h3>
+            </div>
+            <div class="card">
+                <img src="images/table2.jpg" loading="lazy">
+                <h3>שולחן יום הולדת מעוצב</h3>
+            </div>
+            <div class="card">
+                <img src="images/table3.jpg" loading="lazy">
+                <h3>קינוחי בוטיק אלגנטיים</h3>
+            </div>
+            <div class="card">
+                <img src="images/meringue.jpg" loading="lazy">
+                <h3>נשיקות מרנג לעיצוב</h3>
+            </div>
+        </div>
+
     </section>
 
     <section id="holidays" class="content-section">
-        <h2 class="category-title">חנוכה</h2>
+        <div class="title-wrapper"><h2 class="category-title">חנוכה</h2></div>
         <div class="gallery">
             <div class="card">
-                <img src="images/chorus.jpeg" loading="lazy">
-                <h3>צורוס חגיגיים</h3>
+                <img src="images/churros.jpg" loading="lazy">
+                <h3>צ'ורוס חגיגיים</h3>
             </div>
             <div class="card">
                 <img src="images/sufganiot.jpg" loading="lazy">
                 <h3>סופגניות במגוון מילויים</h3>
             </div>
         </div>
-        <h2 class="category-title">פורים</h2>
-        <h2 class="category-title">פסח</h2>
-        <h2 class="category-title">שבועות</h2>
-        <h2 class="category-title">ראש השנה</h2>
+        <div class="title-wrapper"><h2 class="category-title">פורים</h2></div>
+        <div class="title-wrapper"><h2 class="category-title">פסח</h2></div>
+        <div class="title-wrapper"><h2 class="category-title">שבועות</h2></div>
+        <div class="title-wrapper"><h2 class="category-title">ראש השנה</h2></div>
     </section>
 
     <section id="about" class="content-section">
@@ -292,6 +401,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     <a href="https://wa.me/972586527034" class="whatsapp-btn" id="wa-text" target="_blank">הזמנה בוואטסאפ</a>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img id="lightbox-img" src="">
+    </div>
+
     <footer id="footer-text">
         האתר פותח ע"י DB בניית אתרים © 2026
     </footer>
@@ -307,6 +421,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 btn.classList.add('active');
                 document.getElementById(btn.dataset.tab).classList.add('active');
             });
+        });
+
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+        const closeBtn = document.querySelector('.close-lightbox');
+        const galleryImages = document.querySelectorAll('.card img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src; 
+                lightbox.classList.add('active'); 
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            lightbox.classList.remove('active');
+        });
+
+        lightbox.addEventListener('click', (e) => {
+            if (e.target !== lightboxImg) {
+                lightbox.classList.remove('active');
+            }
         });
 
         let currentLang = 'he';
