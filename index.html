@@ -39,10 +39,13 @@ body{
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KTLTLDLP"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-header{
-    background:var(--light-pink);
-    padding:20px;
-    text-align:center;
+header {
+    background: var(--light-pink);
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* מסדר את הלוגו והכותרת אחד מתחת לשני */
+    align-items: center; /* ממקרז אותם בדיוק באמצע האופקי */
+    justify-content: center;
 }
 
 .logo-img{
@@ -322,5 +325,6 @@ document.getElementById('langToggle').addEventListener('click',()=>{
 
 </body>
 </html>
+
 
 
